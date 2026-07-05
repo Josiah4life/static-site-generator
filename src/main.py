@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 from copystatic import copy_directory_recursive
 from generate import generate_page, generate_pages_recursive
 
@@ -10,7 +11,7 @@ def main():
         basepath = sys.argv[1]
         
     source_dir = "static"
-    dest_dir = "public"
+    dest_dir = "docs"
 
     # Clean build check: delete 'public/' if it already exists
     if os.path.exists(dest_dir):
@@ -25,5 +26,7 @@ def main():
     generate_pages_recursive("content", "template.html", dest_dir, basepath)
     # generate_page("content/index.md", "template.html", "public/index.html")
     
-    print("Static site successfully generated and deployed to production directory!")if __name__ == "__main__":
-    main()
+    print("Static site successfully generated and deployed to production directory!")
+    
+if __name__ == "__main__":
+        main()
